@@ -14,12 +14,10 @@ protocol APIClient {
 /// Sends requests through an `HTTPTransport`, caches responses on disk and falls back to the cached copy when the
 /// network fails.
 final class URLSessionAPIClient: APIClient {
-    private static let successStatusCodes = 200..<300
-
     private let transport: HTTPTransport
     private let cache: ResponseCache
 
-    init(transport: HTTPTransport = URLSession.shared, cache: ResponseCache = .shared) {
+    init(transport: HTTPTransport = URLSession.shared, cache: ResponseCache = .api) {
         self.transport = transport
         self.cache = cache
     }
@@ -59,7 +57,7 @@ final class URLSessionAPIClient: APIClient {
             throw APIError.network
         }
         guard let httpResponse = result.response as? HTTPURLResponse else { throw APIError.invalidResponse }
-        guard Self.successStatusCodes.contains(httpResponse.statusCode) else {
+        guard httpResponse.isSuccess else {
             throw APIError.server(statusCode: httpResponse.statusCode)
         }
         return result.data

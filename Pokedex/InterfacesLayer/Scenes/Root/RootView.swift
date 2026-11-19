@@ -9,7 +9,24 @@ import SwiftUI
 
 struct RootView: View {
     var body: some View {
-        ContentUnavailableView("app.name", systemImage: "book.closed")
+        TabView {
+            Tab("tab.pokedex", systemImage: "square.grid.2x2.fill") {
+                RouterStack { _ in
+                    PlaceholderView.getView(title: "tab.pokedex".localized)
+                }
+            }
+            Tab("tab.favorites", systemImage: "heart.fill") {
+                RouterStack { _ in
+                    PlaceholderView.getView(title: "tab.favorites".localized)
+                }
+            }
+            Tab("tab.comparator", systemImage: "arrow.left.arrow.right") {
+                RouterStack { _ in
+                    PlaceholderView.getView(title: "tab.comparator".localized)
+                }
+            }
+        }
+        .tabBarMinimizeBehavior(.onScrollDown)
     }
 }
 

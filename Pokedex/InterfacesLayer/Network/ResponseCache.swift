@@ -16,9 +16,10 @@ nonisolated struct CacheEntry: Sendable {
     }
 }
 
-/// Disk cache for API responses. Best effort: a failed read is a miss and a failed write is ignored.
+/// Disk cache for downloaded data. Best effort: a failed read is a miss and a failed write is ignored.
 actor ResponseCache {
-    static let shared = ResponseCache(directory: .cachesDirectory.appending(path: "APIResponses"))
+    static let api = ResponseCache(directory: .cachesDirectory.appending(path: "APIResponses"))
+    static let images = ResponseCache(directory: .cachesDirectory.appending(path: "Images"))
 
     private let directory: URL
 
