@@ -22,7 +22,8 @@ class ScaffoldViewModel {
 
     // MARK: - Overridable events
 
-    func didEmptyStateButtonClick() {}
+    /// `async` so a retry can be awaited in tests.
+    func didEmptyStateButtonClick() async {}
 
     // MARK: - State
 

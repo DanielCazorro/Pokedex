@@ -13,7 +13,11 @@ App de iOS para consultar todos los Pokémon, hecha en SwiftUI sobre la API púb
 
 ## 📱 Capturas
 
-*Las capturas se irán añadiendo a medida que estén las pantallas.*
+<p align="center">
+  <img src="docs/screenshots/pokedex.png" width="260" alt="Pokédex: rejilla con los Pokémon, su número, sus tipos y su imagen">
+</p>
+
+*Se irán añadiendo más a medida que estén las pantallas.*
 
 ---
 

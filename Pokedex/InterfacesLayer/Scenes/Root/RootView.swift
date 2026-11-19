@@ -11,8 +11,8 @@ struct RootView: View {
     var body: some View {
         TabView {
             Tab("tab.pokedex", systemImage: "square.grid.2x2.fill") {
-                RouterStack { _ in
-                    PlaceholderView.getView(title: "tab.pokedex".localized)
+                RouterStack { router in
+                    PokemonListView.getView(router: router)
                 }
             }
             Tab("tab.favorites", systemImage: "heart.fill") {

@@ -5,3 +5,4 @@ exclude_tests: true
 retain_swift_ui_previews: true
 build_arguments:
 - -skipPackagePluginValidation
+retain_codable_properties: true

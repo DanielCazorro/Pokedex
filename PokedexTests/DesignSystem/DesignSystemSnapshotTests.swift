@@ -43,20 +43,21 @@ extension SnapshotTests {
             assertSnapshot(of: view, as: .component(width: 390, height: 200))
         }
 
-        @Test func pokemonCards() {
+        @Test func pokemonCardGrid() {
             // Given
-            let pikachu = PokemonCardModel(id: 25, name: "Pikachu", primaryType: .electric, secondaryType: nil)
-            let gengar = PokemonCardModel(id: 94, name: "Gengar", primaryType: .ghost, secondaryType: .poison)
-            let view = LazyVGrid(columns: [GridItem(), GridItem()], spacing: Spacing.m) {
-                PokemonCard(model: pikachu)
-                PokemonCard(model: gengar)
-            }
-            .padding()
-            .background(.background)
-            .environment(\.imageLoader, imageLoader)
+            let cards = [
+                PokemonCardModel(id: 25, name: "Pikachu", primaryType: .electric, secondaryType: nil),
+                PokemonCardModel(id: 94, name: "Gengar", primaryType: .ghost, secondaryType: .poison),
+                PokemonCardModel(id: 448, name: "Lucario", primaryType: .fighting, secondaryType: .steel),
+                PokemonCardModel(id: 175, name: "Togepi", primaryType: .fairy, secondaryType: nil)
+            ]
+            let view = PokemonCardGrid(cards: cards, onSelect: { _ in })
+                .padding(.top, Spacing.l)
+                .background(.background)
+                .environment(\.imageLoader, imageLoader)
 
             // When / Then
-            assertSnapshot(of: view, as: .component(width: 390, height: 170))
+            assertSnapshot(of: view, as: .component(width: 390, height: 320))
         }
     }
 }
