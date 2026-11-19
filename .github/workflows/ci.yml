@@ -31,7 +31,11 @@ jobs:
           echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
 
       # SwiftLint runs inside the build through its plugin: an error-level rule breaks the build.
+      # Snapshots only match on the simulator they were recorded with, so they run locally only. The TEST_RUNNER_
+      # prefix is how xcodebuild passes an environment variable to the tests.
       - name: Build and test
+        env:
+          TEST_RUNNER_SKIP_SNAPSHOTS: "1"
         run: |
           set -o pipefail
           xcodebuild test \
