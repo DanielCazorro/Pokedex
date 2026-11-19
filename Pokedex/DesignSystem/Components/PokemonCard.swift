@@ -20,6 +20,9 @@ struct PokemonCardModel: Identifiable, Hashable {
     var formattedNumber: String {
         "#" + id.formatted(.number.precision(.integerLength(3...)).grouping(.never))
     }
+
+    /// Content for the skeleton cards shown while loading (always redacted, never shown as text).
+    static let placeholder = PokemonCardModel(id: .zero, name: "Pokémon", primaryType: .normal, secondaryType: nil)
 }
 
 struct PokemonCard: View {

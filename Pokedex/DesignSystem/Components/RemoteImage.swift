@@ -8,10 +8,12 @@
 import SwiftUI
 
 /// Image loaded through the `ImageLoader` in the environment. Shows a placeholder until (and unless) it loads.
+/// Inside a redacted (skeleton) view it doesn't load anything.
 struct RemoteImage: View {
     let url: URL
 
     @Environment(\.imageLoader) private var imageLoader
+    @Environment(\.redactionReasons) private var redactionReasons
     @State private var image: UIImage?
 
     var body: some View {
@@ -29,6 +31,8 @@ struct RemoteImage: View {
         }
         .accessibilityHidden(true)
         .task(id: url) {
+            // Only skeletons: the system can add other reasons (`.privacy`) to normal content.
+            guard !redactionReasons.contains(.placeholder) else { return }
             image = await imageLoader.image(for: url)
         }
     }

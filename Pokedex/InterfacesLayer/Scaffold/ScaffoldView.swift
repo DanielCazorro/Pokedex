@@ -21,7 +21,9 @@ struct ScaffoldView<Content: View>: View {
     var body: some View {
         Group {
             if let emptyState = viewModel.emptyState {
-                EmptyStateView(model: emptyState, onButtonClick: viewModel.didEmptyStateButtonClick)
+                EmptyStateView(model: emptyState) {
+                    Task { await viewModel.didEmptyStateButtonClick() }
+                }
             } else {
                 content
             }
