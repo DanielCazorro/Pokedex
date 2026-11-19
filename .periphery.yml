@@ -1,0 +1,7 @@
+project: Pokedex.xcodeproj
+schemes:
+- Pokedex
+exclude_tests: true
+retain_swift_ui_previews: true
+build_arguments:
+- -skipPackagePluginValidation

@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build, lint and tests
+    # Standard image with Xcode 27 (preview). On public repos it doesn't use paid minutes.
+    runs-on: xcode-27
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Xcode version
+        run: xcodebuild -version
+
+      - name: Pick simulator
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available --json \
+            | jq -r '[.devices | to_entries | sort_by(.key)[] | select(.key | contains("iOS"))
+              | .value[] | select(.name | startswith("iPhone"))] | last | .udid')
+          echo "Simulator: $DEVICE_ID"
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+
+      # SwiftLint runs inside the build through its plugin: an error-level rule breaks the build.
+      - name: Build and test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Pokedex.xcodeproj \
+            -scheme Pokedex \
+            -destination "id=$DEVICE_ID" \
+            -skipPackagePluginValidation \
+            -resultBundlePath TestResults.xcresult
+
+      - name: Upload results on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: TestResults.xcresult

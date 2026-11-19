@@ -1,0 +1,80 @@
+disabled_rules:
+- file_length
+- function_body_length
+- function_parameter_count
+- type_body_length
+- type_name
+
+opt_in_rules:
+- closure_spacing
+- contains_over_filter_is_empty
+- contains_over_first_not_nil
+- discouraged_object_literal
+- empty_count
+- explicit_init
+- first_where
+- last_where
+- modifier_order
+- redundant_self
+- redundant_type_annotation
+- shorthand_optional_binding
+- sorted_first_last
+- toggle_bool
+- unneeded_parentheses_in_closure_argument
+- xct_specific_matcher
+
+excluded:
+- DerivedData
+- .build
+cyclomatic_complexity:
+  warning: 30
+  error: 100
+
+line_length:
+  warning: 120
+  error: 120
+  ignores_comments: false
+  ignores_urls: true
+
+large_tuple:
+  warning: 3
+  error: 4
+
+identifier_name:
+  max_length:
+    warning: 51
+    error: 52
+  min_length:
+    warning: 2
+    error: 1
+  excluded: # excluded via string array
+    - id
+    - URL
+    - x
+    - y
+    - s
+    - n
+    - a
+    - j
+    - b
+    - d
+    - c
+    - t
+    - m
+    - i
+    - l
+    - h
+    - w
+    - r
+    - g
+    - f
+    - v
+  validates_start_with_lowercase: warning
+
+nesting:
+  type_level:
+    warning: 5
+    error: 10
+  function_level:
+    warning: 5
+    error: 10
