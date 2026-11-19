@@ -50,6 +50,13 @@ App de iOS para consultar todos los Pokémon, hecha en SwiftUI sobre la API púb
 
 No hace falta ninguna API key.
 
+> **¿Falla el build con `Plug-in ended with uncaught signal: 5`?** Es el plugin de SwiftLint, que no encuentra
+> SourceKit porque el Mac tiene seleccionadas las Command Line Tools en lugar de Xcode. Se arregla con:
+>
+> ```bash
+> sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+> ```
+
 ---
 
 ## 📄 Créditos
