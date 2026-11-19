@@ -1,0 +1,106 @@
+{
+  "data": {
+    "species": [
+      {
+        "id": 1,
+        "name": "bulbasaur",
+        "generationId": 1,
+        "names": [
+          {
+            "name": "Bulbasaur",
+            "language": {
+              "name": "es"
+            }
+          },
+          {
+            "name": "Bulbasaur",
+            "language": {
+              "name": "en"
+            }
+          }
+        ],
+        "varieties": [
+          {
+            "types": [
+              {
+                "type": {
+                  "name": "grass"
+                }
+              },
+              {
+                "type": {
+                  "name": "poison"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "name": "pikachu",
+        "generationId": 1,
+        "names": [
+          {
+            "name": "Pikachu",
+            "language": {
+              "name": "es"
+            }
+          },
+          {
+            "name": "Pikachu",
+            "language": {
+              "name": "en"
+            }
+          }
+        ],
+        "varieties": [
+          {
+            "types": [
+              {
+                "type": {
+                  "name": "electric"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1025,
+        "name": "pecharunt",
+        "generationId": 9,
+        "names": [
+          {
+            "name": "Pecharunt",
+            "language": {
+              "name": "es"
+            }
+          },
+          {
+            "name": "Pecharunt",
+            "language": {
+              "name": "en"
+            }
+          }
+        ],
+        "varieties": [
+          {
+            "types": [
+              {
+                "type": {
+                  "name": "poison"
+                }
+              },
+              {
+                "type": {
+                  "name": "ghost"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
